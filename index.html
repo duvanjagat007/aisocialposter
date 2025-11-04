@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Social Media Poster Designer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo&family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Lato&family=Lobster&family=Montserrat:wght@400;700&family=Oswald&family=Pacifico&family=Playfair+Display:wght@700&family=Poppins:wght@400;600&family=Raleway&family=Roboto+Condensed&family=Roboto:wght@400;700&family=Source+Sans+Pro&family=Ubuntu&display=swap" rel="stylesheet">
+    
+    <!-- Libraries for Exporting Posters -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoVBL5gI9kDXrdIGNOREgit/bA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <style>
+      /* Custom scrollbar for a more polished look */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f8fafc; /* slate-50 */
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #cbd5e1; /* slate-300 */
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8; /* slate-400 */
+      }
+
+      /* Animations */
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes slideInLeft {
+        from { opacity: 0; transform: translateX(-20px); }
+        to { opacity: 1; transform: translateX(0); }
+      }
+      @keyframes pulse {
+        0%, 100% { outline-color: rgba(99, 102, 241, 0.4); }
+        50% { outline-color: rgba(99, 102, 241, 1); }
+      }
+
+      .animate-fadeIn { 
+        opacity: 0; /* Start hidden */
+        animation: fadeIn 0.5s ease-out forwards; 
+      }
+      .animate-slideInLeft { 
+        opacity: 0; /* Start hidden */
+        animation: slideInLeft 0.5s ease-out forwards; 
+      }
+      .animate-pulse-outline { animation: pulse 1.5s infinite; }
+
+      /* For smooth accordion transitions */
+      .accordion-content {
+        transition: max-height 0.35s ease-in-out, opacity 0.3s ease-in-out;
+        overflow: hidden;
+        max-height: 0;
+        opacity: 0;
+      }
+      .accordion-content.open {
+        max-height: 1000px; /* Large enough for content */
+        opacity: 1;
+      }
+    </style>
+  <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.28.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+  }
+}
+</script>
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
